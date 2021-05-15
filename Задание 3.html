@@ -1,0 +1,14 @@
+<script>
+  var a = +prompt("Введите a");
+  var b = +prompt("Введите b");
+
+  function res(a, b) {
+    if (a >= 0 && b >= 0) {
+      return a - b;
+    } else if (a < 0 && b < 0) {
+      return a * b;
+    }
+    return a + b;
+  }
+  alert(res(a, b));
+</script>
