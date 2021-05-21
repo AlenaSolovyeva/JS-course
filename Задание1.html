@@ -1,0 +1,32 @@
+<script>
+  var n = 100,
+    i = 0;
+  var arr = [];
+
+  while (i < n) {
+    arr[i] = true;
+    i++;
+  }
+
+  i = 2;
+
+  while (i * i <= n) {
+    if (arr[i]) {
+      var j = i * i;
+      while (j < n) {
+        arr[j] = false;  
+        j += i;
+      }
+    }
+    i++;
+  }
+
+  i = 0;
+
+  while (i < n) {
+    if(arr[i]) {
+        console.log(i)
+    }
+    i++;
+  } 
+</script>
