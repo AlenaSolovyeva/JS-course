@@ -1,0 +1,19 @@
+<script>
+    var n = +prompt("Введите число от 0 до 999")
+    
+    function f(n){
+        var obj = {};
+        
+        if(n < 0 || n > 999) {
+            console.log("Некорректное число. Введите другое");
+            return obj;
+        }
+        obj.ed = n % 10;
+        obj.des = Math.floor(n % 100 / 10);
+        obj.sot = Math.floor(n % 1000 / 100);
+
+        return obj;
+    }
+
+    console.log(f(n));
+</script>
