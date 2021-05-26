@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chess Board</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div id="chess"></div>
+    <script>
+      function createChessBoard() {
+        var table = document.createElement("table");
+        table.classList.add("chess-board");
+        for (var i = 1; i <= 10; i++) {
+          var tr = document.createElement("tr");
+          table.append(tr);
+
+          var th = document.createElement("th");
+          th.innerHTML = i === 1 || i === 10 ? "" : i - 1;
+
+          tr.append(th);
+          for (var j = 1; j <= 8; j++) {
+            var td = document.createElement(i === 1 || i === 10 ? "th" : "td");
+
+            if (i !== 1 && i !== 10) {
+              td.id = (i - 1) + String.fromCharCode(97 + (j - 1));
+              if (i % 2 == 0) {
+                td.classList.add(j % 2 === 1 ? 'light' : 'dark');
+              } else {
+                td.classList.add(j % 2 === 1 ? 'dark' : 'light');
+              }
+            } else {
+              td.innerHTML = String.fromCharCode(97 + (j - 1));
+            }
+            tr.append(td);
+          }
+          th = document.createElement("th");
+          th.innerHTML = i === 1 || i === 10 ? "" : i - 1;
+          tr.append(th);
+        }
+        return table;
+      }
+
+      function placeFigure(figure, color, ...coords) {
+        for (var i = 0; i < coords.length; i++) {
+          var cell = document.getElementById(coords[i]);
+          cell.innerHTML = figure;
+          cell.classList.add(color + '-figure');
+        }
+      }
+      
+      var table = createChessBoard();
+      document.getElementById("chess").appendChild(table);
+
+      placeFigure('♞', 'light', '1b','1g');
+      placeFigure('♞', 'dark', '8b','8g');
+      placeFigure('♟','light','2a','2b','2c','2d','2e','2f','2g','2h');
+      placeFigure('♟','dark','7a','7b','7c','7d','7e','7f','7g','7h');
+      placeFigure('♜', 'light', '1a','1h');
+      placeFigure('♜', 'dark', '8a','8h');
+      placeFigure('♝', 'light', '1c','1f');
+      placeFigure('♝', 'dark', '8c','8f');
+      placeFigure('♚', 'light','1d');
+      placeFigure('♚', 'dark','8e');
+      placeFigure('♛', 'light','1e');
+      placeFigure('♛', 'dark','8d');
+    </script>
+  </body>
+</html>
