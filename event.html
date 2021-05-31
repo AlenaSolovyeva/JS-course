@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="small pics/0.jpg" alt="new york" width="360" height="240" />
+    <img src="small pics/1.jpg" alt="new york" width="360" height="240" />
+    <img src="small pics/2.jpg"  alt="new york" width="360" height="240" />
+
+    <script>
+      var pics = document.getElementsByTagName("img");
+      for (var i = 0; i < 3; i++) {
+        pics[i].onclick = handleImageClick;
+      }
+
+      function handleImageClick(e) {
+        console.log(e.target.src.replace('small', 'big'));
+        var img = document.createElement("img");
+        img.src = e.target.src.replace('small', 'big');
+        img.id = "big";
+        img.width = "1040";
+        img.height = "720";
+        img.onerror = function() {
+            alert("Изображение не найдено")
+        }
+        
+        img.onload = () => {
+            var existedImg = document.getElementById("big");
+            if (existedImg !== null) {
+                existedImg.remove();
+            } 
+            document.body.append(img);
+        };
+      }
+    </script>
+  </body>
+</html>
